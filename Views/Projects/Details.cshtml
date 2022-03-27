@@ -1,0 +1,75 @@
+﻿@model PolarCape.Models.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h3>Details on @Model.Name</h3>
+    <hr />
+    <div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.StartDate)
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.StartDate)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.EndDate)
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.EndDate)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <b>Client: </b>
+            </div>
+            <div class="col-md-10">
+                <ul style="list-style-type:none">
+                    @foreach (var client in Model.Clients)
+                    {
+                        <li>
+                            <a href="/Clients/Details/@client.ClientId" style="color:black">@client.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <b>Employees: </b>
+            </div>
+            <div class="col-md-10">
+                <ul style="list-style-type:none">
+                    @foreach (var employee in Model.Employees)
+                    {
+                        <li>
+                            <a href="/Clients/Details/@employee.EmployeeId" style="color:black">@employee.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", "Index", new { id = Model.ProjectId }, new { @class = "btn btn-primary"}) 
+    @Html.ActionLink("Back to List", "Index", "Projects", new { @class = "btn btn-default"})
+</p>
